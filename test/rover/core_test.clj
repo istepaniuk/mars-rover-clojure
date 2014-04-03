@@ -42,4 +42,6 @@
   (testing "The rover rotates right twice"
     (is (= {:x 0 :y 0 :bearing :south} (move-rover {:x 0 :y 0 :bearing :north} "RR"))))
   (testing "The rover rotates left"
-    (is (= {:x 0 :y 0 :bearing :west} (move-rover {:x 0 :y 0 :bearing :north} "L")))))
+    (is (= {:x 0 :y 0 :bearing :west} (move-rover {:x 0 :y 0 :bearing :north} "L"))))
+  (testing "The rover moves forward while heading east"
+    (is (= {:x 1 :y 0 :bearing :east} (move-rover {:x 0 :y 0 :bearing :east} "F")))))

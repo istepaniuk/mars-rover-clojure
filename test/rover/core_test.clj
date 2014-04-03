@@ -4,7 +4,7 @@
 
 (defn- do-command [position command]
   (let [{x :x y :y bearing :bearing} position]
-    {:x x :y (get {"F" 1 "B" -1} command) :bearing bearing})
+    {:x x :y (+ y (get {"F" 1 "B" -1} command)) :bearing bearing})
   )
 
 (defn move-rover [position commands]

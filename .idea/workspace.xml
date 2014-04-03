@@ -26,8 +26,8 @@
       <file leaf-file-name="core_test.clj" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/rover/core_test.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.82653064" vertical-offset="1161" max-vertical-offset="1809">
-              <caret line="61" column="85" selection-start-line="61" selection-start-column="85" selection-end-line="61" selection-end-column="85" />
+            <state vertical-scroll-proportion="0.4030612" vertical-offset="1140" max-vertical-offset="1809">
+              <caret line="51" column="20" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -491,8 +491,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/rover/core_test.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.82653064" vertical-offset="1161" max-vertical-offset="1809">
-          <caret line="61" column="85" selection-start-line="61" selection-start-column="85" selection-end-line="61" selection-end-column="85" />
+        <state vertical-scroll-proportion="0.4030612" vertical-offset="1140" max-vertical-offset="1809">
+          <caret line="51" column="20" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
           <folding />
         </state>
       </provider>

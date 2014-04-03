@@ -34,7 +34,7 @@
 (defn- do-command [position command]
   (let [{x :x y :y bearing :bearing} position]
     (let [{delta-x :delta-x delta-y :delta-y} (calculate-displacement bearing command)]
-      {:x (+ x delta-x) :y (+ y delta-y) :bearing (calculate-new-bearing bearing command)}
+      {:x (mod (+ x delta-x) 100) :y (mod (+ y delta-y) 100) :bearing (calculate-new-bearing bearing command)}
       )
     )
   )

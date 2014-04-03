@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ReplState" timestamp="1396552988447">{:repl-history {:ide [], :local [&quot;(+1 1)&quot; &quot;(+ 1 1)&quot; &quot;\&quot;FIXME, I fail.\&quot;&quot; &quot;is (= 0 1)&quot; &quot;(is (= {:x 1 :y 0 :bearing :north} {:x 0 :y 0 :bearing :north}))&quot; &quot;(is (= {:x 0 :y 0 :bearing :north} {:x 0 :y 0 :bearing :north}))&quot; &quot;(println \&quot;Hello, World!\&quot;)&quot; &quot;(testing \&quot;Mars rover movements\&quot;\n  (testing \&quot;The rover stays in the same position if it gets no commands\&quot;\n    (is (= {:x 0 :y 0 :bearing :north} {:x 0 :y 0 :bearing :north}))))&quot;], :remote []}}</component>
+  <component name="ReplState" timestamp="1396553074034">{:repl-history {:ide [], :local [&quot;(+1 1)&quot; &quot;(+ 1 1)&quot; &quot;\&quot;FIXME, I fail.\&quot;&quot; &quot;is (= 0 1)&quot; &quot;(is (= {:x 1 :y 0 :bearing :north} {:x 0 :y 0 :bearing :north}))&quot; &quot;(is (= {:x 0 :y 0 :bearing :north} {:x 0 :y 0 :bearing :north}))&quot; &quot;(println \&quot;Hello, World!\&quot;)&quot; &quot;(testing \&quot;Mars rover movements\&quot;\n  (testing \&quot;The rover stays in the same position if it gets no commands\&quot;\n    (is (= {:x 0 :y 0 :bearing :north} {:x 0 :y 0 :bearing :north}))))&quot;], :remote []}}</component>
 </project>
 

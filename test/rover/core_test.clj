@@ -14,4 +14,6 @@
   (testing "The rover stays in the same position if it gets no commands"
     (is (= {:x 0 :y 0 :bearing :north} (move-rover {:x 0 :y 0 :bearing :north} ""))))
   (testing "The rover moves forward"
-    (is (= {:x 0 :y 1 :bearing :north} (move-rover {:x 0 :y 0 :bearing :north} "F")))))
+    (is (= {:x 0 :y 1 :bearing :north} (move-rover {:x 0 :y 0 :bearing :north} "F"))))
+  (testing "The rover moves backwards"
+    (is (= {:x 0 :y -1 :bearing :north} (move-rover {:x 0 :y 0 :bearing :north} "B")))))

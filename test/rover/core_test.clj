@@ -3,7 +3,7 @@
             [rover.core :refer :all]))
 
 (defn- calculate-rotation[command]
-  (get {"R" 1} command 0)
+  (get {"R" 1 "L" -1} command 0)
   )
 
 (defn- calculate-new-bearing [bearing command]

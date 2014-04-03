@@ -3,7 +3,8 @@
             [rover.core :refer :all]))
 
 (defn- do-command [position command]
-  (get {"F" {:x 0 :y 1 :bearing :north}} command position)
+  (let [{x :x y :y bearing :bearing} position]
+    {:x x :y (get {"F" 1 "B" -1} command) :bearing bearing})
   )
 
 (defn move-rover [position commands]

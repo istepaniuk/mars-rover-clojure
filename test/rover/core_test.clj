@@ -2,9 +2,20 @@
   (:require [clojure.test :refer :all]
             [rover.core :refer :all]))
 
+(defn- calculate-bearing [bearing command]
+  (get {"R" :east} command :north)
+  )
+
+(defn- calculate-displacement [bearing command]
+    {:delta-x 0 :delta-y (get {"F" 1 "B" -1} command 0)}
+  )
+
 (defn- do-command [position command]
   (let [{x :x y :y bearing :bearing} position]
-    {:x x :y (+ y (get {"F" 1 "B" -1} command 0)) :bearing (get {"R" :east} bearing :north)})
+    (let [{delta-x :delta-x delta-y :delta-y} (calculate-displacement bearing command)]
+      {:x x :y (+ y delta-y) :bearing (calculate-bearing bearing command)}
+      )
+    )
   )
 
 (defn move-rover [position commands]

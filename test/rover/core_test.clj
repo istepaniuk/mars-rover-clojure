@@ -2,16 +2,24 @@
   (:require [clojure.test :refer :all]
             [rover.core :refer :all]))
 
-(def ^:private planet-size {:around-x 100 :around-y 100}
+(def ^:private planet-size
+    {
+      :around-x 100
+      :around-y 100
+    }
   )
 
-(def ^:private forward-displacements {:north {:delta-x 0  :delta-y 1 }
-                                      :east  {:delta-x 1  :delta-y 0 }
-                                      :south {:delta-x 0  :delta-y -1}
-                                      :west  {:delta-x -1 :delta-y 0 }})
+(def ^:private forward-displacements
+    {
+      :north {:delta-x 0  :delta-y 1 }
+      :east  {:delta-x 1  :delta-y 0 }
+      :south {:delta-x 0  :delta-y -1}
+      :west  {:delta-x -1 :delta-y 0 }
+    }
+  )
 
 (defn- calculate-rotation[command]
-  (get {"R" 1 "L" -1} command 0)
+  (get { "R" 1 "L" -1} command 0)
   )
 
 (defn- calculate-new-bearing [old-bearing command]
@@ -29,9 +37,12 @@
   )
 
 (defn- calculate-displacement [bearing command]
-  (get { "F" (forward-displacements bearing)
+  (get {
+         "F" (forward-displacements bearing)
          "B" (backward-displacements bearing)
-         } command {:delta-x 0 :delta-y 0})
+       }
+       command {:delta-x 0 :delta-y 0}
+    )
   )
 
 (defn- is-coordinate-an-obstacle? [coordinate obstacles]
@@ -58,7 +69,8 @@
         )
       )
     )]
-    (reduce do-command initial-position (map str commands))
+    (reduce do-command initial-position (map str commands)
+      )
     )
   )
 

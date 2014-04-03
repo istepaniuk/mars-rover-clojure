@@ -31,10 +31,22 @@
          } command {:delta-x 0 :delta-y 0})
   )
 
-(defn- do-command [position command]
+(def ^:private planet-size {:around-x 100 :around-y 100}
+  )
+
+(defn- calculate-new-coordinates [position command]
   (let [{x :x y :y bearing :bearing} position]
     (let [{delta-x :delta-x delta-y :delta-y} (calculate-displacement bearing command)]
-      {:x (mod (+ x delta-x) 100) :y (mod (+ y delta-y) 100) :bearing (calculate-new-bearing bearing command)}
+      {:x (mod (+ x delta-x) (planet-size :around-x))
+       :y (mod (+ y delta-y) (planet-size :around-y))}
+      )
+    )
+  )
+
+(defn- do-command [position command]
+  (let [{bearing :bearing} position]
+    (let [{new-x :x new-y :y} (calculate-new-coordinates position command)]
+        {:x new-x :y new-y :bearing (calculate-new-bearing bearing command)}
       )
     )
   )

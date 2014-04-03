@@ -59,4 +59,6 @@
   (testing "The rover rotates left"
     (is (= {:x 0 :y 0 :bearing :west} (move-rover {:x 0 :y 0 :bearing :north} "L"))))
   (testing "The rover moves forward while heading east"
-    (is (= {:x 1 :y 0 :bearing :east} (move-rover {:x 0 :y 0 :bearing :east} "F")))))
+    (is (= {:x 1 :y 0 :bearing :east} (move-rover {:x 0 :y 0 :bearing :east} "F"))))
+  (testing "The position wraps arround 100 because the planet is round"
+    (is (= {:x 1 :y 99 :bearing :east} (move-rover {:x 99 :y 1 :bearing :south} "FFLFF")))))

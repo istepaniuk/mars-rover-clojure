@@ -6,16 +6,19 @@
   (get {"R" 1 "L" -1} command 0)
   )
 
-(defn- calculate-new-bearing [bearing command]
+(defn- calculate-new-bearing [old-bearing command]
   (let [all-bearings [:north :east :south :west]]
-    (get all-bearings (mod (+ (calculate-rotation command) (.indexOf all-bearings bearing)) (count all-bearings)))
+    (let [new-index (+ (calculate-rotation command) (.indexOf all-bearings old-bearing))]
+      (get all-bearings (mod new-index (count all-bearings))
+        )
+      )
     )
   )
 
-(def ^:private forward-displacements {:north {:delta-x 0  :delta-y 1}
-                                      :east  {:delta-x 1  :delta-y 0}
-                                      :south {:delta-x -1 :delta-y 0}
-                                      :west  {:delta-x 0  :delta-y -1}})
+(def ^:private forward-displacements {:north {:delta-x 0  :delta-y 1 }
+                                      :east  {:delta-x 1  :delta-y 0 }
+                                      :south {:delta-x 0  :delta-y -1}
+                                      :west  {:delta-x -1 :delta-y 0 }})
 
 (defn- backward-displacements [bearing]
   (let [{delta-x :delta-x delta-y :delta-y} (forward-displacements bearing)]

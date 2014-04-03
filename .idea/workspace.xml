@@ -26,8 +26,8 @@
       <file leaf-file-name="core_test.clj" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/rover/core_test.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.50510204" vertical-offset="729" max-vertical-offset="2187">
-              <caret line="38" column="51" selection-start-line="38" selection-start-column="51" selection-end-line="38" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.6785714" vertical-offset="1653" max-vertical-offset="2241">
+              <caret line="76" column="58" selection-start-line="76" selection-start-column="12" selection-end-line="76" selection-end-column="58" />
               <folding />
             </state>
           </provider>
@@ -457,7 +457,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -491,8 +491,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/rover/core_test.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.50510204" vertical-offset="729" max-vertical-offset="2187">
-          <caret line="38" column="51" selection-start-line="38" selection-start-column="51" selection-end-line="38" selection-end-column="51" />
+        <state vertical-scroll-proportion="0.6785714" vertical-offset="1653" max-vertical-offset="2241">
+          <caret line="76" column="58" selection-start-line="76" selection-start-column="12" selection-end-line="76" selection-end-column="58" />
           <folding />
         </state>
       </provider>

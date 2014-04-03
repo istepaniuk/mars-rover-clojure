@@ -51,26 +51,28 @@
     )
   )
 
-(defn move-rover [position commands]
+(defn move-rover [position commands obstacles]
   (reduce do-command position (map str commands))
   )
 
 (deftest mars-rover-movements
   (testing "The rover stays in the same position if it gets no commands"
-    (is (= {:x 0 :y 0 :bearing :north} (move-rover {:x 0 :y 0 :bearing :north} ""))))
+    (is (= {:x 0 :y 0 :bearing :north} (move-rover {:x 0 :y 0 :bearing :north} "" []))))
   (testing "The rover moves forward"
-    (is (= {:x 0 :y 1 :bearing :north} (move-rover {:x 0 :y 0 :bearing :north} "F"))))
+    (is (= {:x 0 :y 1 :bearing :north} (move-rover {:x 0 :y 0 :bearing :north} "F" []))))
   (testing "The rover moves backwards"
-    (is (= {:x 0 :y 1 :bearing :north} (move-rover {:x 0 :y 2 :bearing :north} "B"))))
+    (is (= {:x 0 :y 1 :bearing :north} (move-rover {:x 0 :y 2 :bearing :north} "B" []))))
   (testing "The rover moves forward twice"
-    (is (= {:x 0 :y 2 :bearing :north} (move-rover {:x 0 :y 0 :bearing :north} "FF"))))
+    (is (= {:x 0 :y 2 :bearing :north} (move-rover {:x 0 :y 0 :bearing :north} "FF" []))))
   (testing "The rover rotates right"
-    (is (= {:x 0 :y 0 :bearing :east} (move-rover {:x 0 :y 0 :bearing :north} "R"))))
+    (is (= {:x 0 :y 0 :bearing :east} (move-rover {:x 0 :y 0 :bearing :north} "R" []))))
   (testing "The rover rotates right twice"
-    (is (= {:x 0 :y 0 :bearing :south} (move-rover {:x 0 :y 0 :bearing :north} "RR"))))
+    (is (= {:x 0 :y 0 :bearing :south} (move-rover {:x 0 :y 0 :bearing :north} "RR" []))))
   (testing "The rover rotates left"
-    (is (= {:x 0 :y 0 :bearing :west} (move-rover {:x 0 :y 0 :bearing :north} "L"))))
+    (is (= {:x 0 :y 0 :bearing :west} (move-rover {:x 0 :y 0 :bearing :north} "L"[]))))
   (testing "The rover moves forward while heading east"
-    (is (= {:x 1 :y 0 :bearing :east} (move-rover {:x 0 :y 0 :bearing :east} "F"))))
+    (is (= {:x 1 :y 0 :bearing :east} (move-rover {:x 0 :y 0 :bearing :east} "F" []))))
   (testing "The position wraps arround 100 because the planet is round"
-    (is (= {:x 1 :y 99 :bearing :east} (move-rover {:x 99 :y 1 :bearing :south} "FFLFF")))))
+    (is (= {:x 1 :y 99 :bearing :east} (move-rover {:x 99 :y 1 :bearing :south} "FFLFF" []))))
+  (testing "The rover stops when it encounters an obstacle"
+    (is (= {:x 0 :y 1 :bearing :north} (move-rover {:x 0 :y 0 :bearing :north} "FF" [{:x 0 :y 1}])))))

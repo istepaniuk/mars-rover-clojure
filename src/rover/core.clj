@@ -21,7 +21,7 @@
   (get { "R" 1 "L" -1} command 0)
   )
 
-(defn- calculate-new-heading [old-heaing command]
+(defn- calculate-new-heading [old-heading command]
   (let [all-headings [:north :east :south :west]]
     (let [new-index (+ (calculate-rotation command) (.indexOf all-headings old-heading))]
       (get all-headings (mod new-index (count all-headings))

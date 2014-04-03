@@ -2,9 +2,13 @@
   (:require [clojure.test :refer :all]
             [rover.core :refer :all]))
 
+(defn- calculate-rotation[command]
+  (get {"R" 1} command 0)
+  )
+
 (defn- calculate-new-bearing [bearing command]
-  (let [possible-bearings [:north :east :south :west]]
-    (get possible-bearings (mod (+ (get {"R" 1} command 0) (.indexOf possible-bearings bearing)) 4))
+  (let [all-bearings [:north :east :south :west]]
+    (get all-bearings (mod (+ (calculate-rotation command) (.indexOf all-bearings bearing)) (count all-bearings)))
     )
   )
 

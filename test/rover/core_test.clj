@@ -12,14 +12,26 @@
     )
   )
 
+(def ^:private forward-displacements {:north {:delta-x 0  :delta-y 1}
+                                      :east  {:delta-x 1  :delta-y 0}
+                                      :south {:delta-x -1 :delta-y 0}
+                                      :west  {:delta-x 0  :delta-y -1}})
+
+(defn- backward-displacements [bearing]
+  (let [{delta-x :delta-x delta-y :delta-y} (forward-displacements bearing)]
+    {:delta-x (- delta-x) :delta-y (- delta-y)})
+  )
+
 (defn- calculate-displacement [bearing command]
-    {:delta-x 0 :delta-y (get {"F" 1 "B" -1} command 0)}
+  (get { "F" (forward-displacements bearing)
+         "B" (backward-displacements bearing)
+         } command {:delta-x 0 :delta-y 0})
   )
 
 (defn- do-command [position command]
   (let [{x :x y :y bearing :bearing} position]
     (let [{delta-x :delta-x delta-y :delta-y} (calculate-displacement bearing command)]
-      {:x x :y (+ y delta-y) :bearing (calculate-new-bearing bearing command)}
+      {:x (+ x delta-x) :y (+ y delta-y) :bearing (calculate-new-bearing bearing command)}
       )
     )
   )

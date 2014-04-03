@@ -59,17 +59,17 @@
 
 (defn move-rover [initial-position commands obstacles]
   (letfn [(do-command [position command]
-                      (let [{x :x y :y bearing :bearing} position]
-                        (let [{new-x :x new-y :y} (calculate-new-coordinates position command)]
-                          (if (is-coordinate-an-obstacle? {:x new-x :y new-y} obstacles)
-                            position
-                            {:x new-x :y new-y :bearing (calculate-new-bearing bearing command)}
-                            )
-                          )
-                        )
-                      )]
+    (let [{x :x y :y bearing :bearing} position]
+      (let [{new-x :x new-y :y} (calculate-new-coordinates position command)]
+        (if (is-coordinate-an-obstacle? {:x new-x :y new-y} obstacles)
+          position
+          {:x new-x :y new-y :bearing (calculate-new-bearing bearing command)}
+          )
+        )
+      )
+    )]
     (reduce do-command initial-position (map str commands)
-            )
+      )
     )
   )
 

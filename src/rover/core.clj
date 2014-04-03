@@ -21,24 +21,24 @@
   (get { "R" 1 "L" -1} command 0)
   )
 
-(defn- calculate-new-bearing [old-bearing command]
-  (let [all-bearings [:north :east :south :west]]
-    (let [new-index (+ (calculate-rotation command) (.indexOf all-bearings old-bearing))]
-      (get all-bearings (mod new-index (count all-bearings))
+(defn- calculate-new-heading [old-heaing command]
+  (let [all-headings [:north :east :south :west]]
+    (let [new-index (+ (calculate-rotation command) (.indexOf all-headings old-heading))]
+      (get all-headings (mod new-index (count all-headings))
            )
       )
     )
   )
 
-(defn- backward-displacements [bearing]
-  (let [{delta-x :delta-x delta-y :delta-y} (forward-displacements bearing)]
+(defn- backward-displacements [heading]
+  (let [{delta-x :delta-x delta-y :delta-y} (forward-displacements heading)]
     {:delta-x (- delta-x) :delta-y (- delta-y)})
   )
 
-(defn- calculate-displacement [bearing command]
+(defn- calculate-displacement [heading command]
   (get {
-         "F" (forward-displacements bearing)
-         "B" (backward-displacements bearing)
+         "F" (forward-displacements heading)
+         "B" (backward-displacements heading)
          }
        command {:delta-x 0 :delta-y 0}
        )
@@ -49,8 +49,8 @@
   )
 
 (defn- calculate-new-coordinates [position command]
-  (let [{x :x y :y bearing :bearing} position]
-    (let [{delta-x :delta-x delta-y :delta-y} (calculate-displacement bearing command)]
+  (let [{x :x y :y heading :heading} position]
+    (let [{delta-x :delta-x delta-y :delta-y} (calculate-displacement heading command)]
       {:x (mod (+ x delta-x) (planet-size :around-x))
        :y (mod (+ y delta-y) (planet-size :around-y))}
       )
@@ -59,11 +59,11 @@
 
 (defn move-rover [initial-position commands obstacles]
   (letfn [(do-command [position command]
-    (let [{x :x y :y bearing :bearing} position]
+    (let [{x :x y :y heading :heading} position]
       (let [{new-x :x new-y :y} (calculate-new-coordinates position command)]
         (if (is-coordinate-an-obstacle? {:x new-x :y new-y} obstacles)
           position
-          {:x new-x :y new-y :bearing (calculate-new-bearing bearing command)}
+          {:x new-x :y new-y :heading (calculate-new-heading heading command)}
           )
         )
       )

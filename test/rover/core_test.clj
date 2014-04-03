@@ -3,7 +3,9 @@
             [rover.core :refer :all]))
 
 (defn- calculate-new-bearing [bearing command]
-  (get {"R" :east} command :north)
+  (let [possible-bearings [:north :east :south :west]]
+    (get possible-bearings (mod (+ (get {"R" 1} command 0) (.indexOf possible-bearings bearing)) 4))
+    )
   )
 
 (defn- calculate-displacement [bearing command]
